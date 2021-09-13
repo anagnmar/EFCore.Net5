@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20210911211907_UpdateBookAuthorCompositeKey.cs" />
+    <Compile Remove="Migrations\20210911211907_UpdateBookAuthorCompositeKey.Designer.cs" />
+    <Compile Remove="Migrations\20210911212406_CorrectionOnBookAuthor.cs" />
+    <Compile Remove="Migrations\20210911212406_CorrectionOnBookAuthor.Designer.cs" />
+    <Compile Remove="Migrations\20210911212833_CorrectionOnBookAuthor.cs" />
+    <Compile Remove="Migrations\20210911212833_CorrectionOnBookAuthor.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.18" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.18" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.18">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WizLib3_Model\WizLib3_Model.csproj" />
+  </ItemGroup>
+
+</Project>
