@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WizLib3_DataAccess.Data;
 
 namespace WizLib3_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210913162232_AddCategoryWithAnnotationsAndFluent")]
+    partial class AddCategoryWithAnnotationsAndFluent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -200,9 +202,6 @@ namespace WizLib3_DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BookDetail_Id")
-                        .HasColumnType("int");
-
                     b.Property<string>("ISBN")
                         .IsRequired()
                         .HasColumnType("nvarchar(15)")
@@ -211,19 +210,11 @@ namespace WizLib3_DataAccess.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("Publisher_Id")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Book_Id");
-
-                    b.HasIndex("BookDetail_Id")
-                        .IsUnique();
-
-                    b.HasIndex("Publisher_Id");
 
                     b.ToTable("Fluent_Books");
                 });
@@ -295,21 +286,6 @@ namespace WizLib3_DataAccess.Migrations
                     b.HasOne("WizLib3_Model.Models.Book", "Book")
                         .WithMany("BookAuthors")
                         .HasForeignKey("Book_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("WizLib3_Model.Models_Fluent.Fluent_Book", b =>
-                {
-                    b.HasOne("WizLib3_Model.Models_Fluent.Fluent_BookDetail", "Fluent_BookDetail")
-                        .WithOne("Fluent_Book")
-                        .HasForeignKey("WizLib3_Model.Models_Fluent.Fluent_Book", "BookDetail_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WizLib3_Model.Models_Fluent.Fluent_Publisher", "Fluent_Publisher")
-                        .WithMany("Fluent_Books")
-                        .HasForeignKey("Publisher_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

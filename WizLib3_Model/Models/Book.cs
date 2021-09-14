@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
 namespace WizLib3_Model.Models
 {
 	public class Book
@@ -21,28 +20,27 @@ namespace WizLib3_Model.Models
 		[Required]
 		public double Price { get; set; }
 
-
 		//	One-To-One relationship: Book - BookDetail
+
 		[ForeignKey("BookDetail")]
 		public int BookDetail_Id { get; set; }
 		public BookDetail BookDetail { get; set; }
 
-
 		//	One-To-Many relationship: Book - BookDetail
+
 		[ForeignKey("Publisher")]
 		public int Publisher_Id { get; set; }
 		public Publisher Publisher { get; set; }
 
+		//	Many-To-Many relationship: Book - Author
 
 		public ICollection<BookAuthor> BookAuthors { get; set; }
-
-
+	//	public virtual ICollection<BookAuthor> BookAuthors { get; set; }
 
 
 		/*	[NotMapped]
 			-----------
 			public string PriceRange { get; set; }
 		*/
-
 	}
 }

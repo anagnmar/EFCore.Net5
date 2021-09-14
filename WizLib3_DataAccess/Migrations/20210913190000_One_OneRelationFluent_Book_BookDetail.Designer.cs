@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WizLib3_DataAccess.Data;
 
 namespace WizLib3_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210913190000_One_OneRelationFluent_Book_BookDetail")]
+    partial class One_OneRelationFluent_Book_BookDetail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,9 +213,6 @@ namespace WizLib3_DataAccess.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("Publisher_Id")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -222,8 +221,6 @@ namespace WizLib3_DataAccess.Migrations
 
                     b.HasIndex("BookDetail_Id")
                         .IsUnique();
-
-                    b.HasIndex("Publisher_Id");
 
                     b.ToTable("Fluent_Books");
                 });
@@ -304,12 +301,6 @@ namespace WizLib3_DataAccess.Migrations
                     b.HasOne("WizLib3_Model.Models_Fluent.Fluent_BookDetail", "Fluent_BookDetail")
                         .WithOne("Fluent_Book")
                         .HasForeignKey("WizLib3_Model.Models_Fluent.Fluent_Book", "BookDetail_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WizLib3_Model.Models_Fluent.Fluent_Publisher", "Fluent_Publisher")
-                        .WithMany("Fluent_Books")
-                        .HasForeignKey("Publisher_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

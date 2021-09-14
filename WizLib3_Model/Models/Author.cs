@@ -20,8 +20,10 @@ namespace WizLib3_Model.Models
 		public DateTime BirthDate { get; set; }
 		public string Location { get; set; }
 
+		//	Many-To-Many relationship: Book - Author
 
 		public ICollection<BookAuthor> BookAuthors { get; set; }
+	//	public virtual ICollection<BookAuthor> BookAuthors { get; set; }
 
 
 

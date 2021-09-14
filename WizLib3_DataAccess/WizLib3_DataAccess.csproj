@@ -11,6 +11,8 @@
     <Compile Remove="Migrations\20210911212406_CorrectionOnBookAuthor.Designer.cs" />
     <Compile Remove="Migrations\20210911212833_CorrectionOnBookAuthor.cs" />
     <Compile Remove="Migrations\20210911212833_CorrectionOnBookAuthor.Designer.cs" />
+    <Compile Remove="Migrations\20210914103908_Changes__.cs" />
+    <Compile Remove="Migrations\20210914103908_Changes__.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

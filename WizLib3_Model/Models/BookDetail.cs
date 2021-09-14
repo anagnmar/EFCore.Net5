@@ -18,8 +18,9 @@ namespace WizLib3_Model.Models
 
 		public double Weight { get; set; }
 
-		//	navigation properties
+	//	navigation properties
 
+		//	One-To-Many ralationship
 		public Book Book { get; set; }
 
 	}

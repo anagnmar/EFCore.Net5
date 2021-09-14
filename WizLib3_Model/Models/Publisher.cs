@@ -20,6 +20,7 @@ namespace WizLib3_Model.Models
 
 	//	navigation properties
 
+		//	One-To-Many ralationship
 		public List<Book> Books { get; set; }
 
 	}

@@ -16,5 +16,13 @@ namespace WizLib3_Model.Models_Fluent
 
 		public double Price { get; set; }
 
+		//	One-To-One relationship
+		public int BookDetail_Id { get; set; }
+		public Fluent_BookDetail Fluent_BookDetail { get; set; }
+
+		//	One-To-Many relationship
+		public int Publisher_Id { get; set; }
+		public Fluent_Publisher Fluent_Publisher { get; set; }
+
 	}
 }
