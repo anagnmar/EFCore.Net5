@@ -17,6 +17,12 @@ namespace WizLib3_Model.Models_Fluent
 		public DateTime BirthDate { get; set; }
 		public string Location { get; set; }
 
+
+		//	Many-To-Many relationship : Book - Author
+
+		public ICollection<Fluent_BookAuthor> Fluent_BookAuthors { get; set; }
+
+
 		[NotMapped]
 		public string FullName
 		{

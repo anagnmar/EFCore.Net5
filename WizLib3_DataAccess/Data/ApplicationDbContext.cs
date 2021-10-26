@@ -71,6 +71,7 @@ namespace WizLib3_DataAccess.Data
 							.HasOne(fb => fb.Fluent_BookDetail)
 							.WithOne(fb => fb.Fluent_Book)
 							.HasForeignKey<Fluent_Book>("BookDetail_Id");
+
 			//	One-To-Many relationship - Fluent_Book To Fluent_Publisher
 			modelBuilder.Entity<Fluent_Book>()
 							.HasOne(fb => fb.Fluent_Publisher)
@@ -94,7 +95,19 @@ namespace WizLib3_DataAccess.Data
 			modelBuilder.Entity<Fluent_Publisher>()
 							.Property(fa => fa.Location).IsRequired();
 
-		#endregion
+			//	Many-To-One relationship - Fluent_Book To Fluent_Author
+			modelBuilder.Entity<Fluent_BookAuthor>()
+						.HasKey(fba => new { fba.Book_Id, fba.Author_Id });
+			modelBuilder.Entity<Fluent_BookAuthor>()
+						.HasOne(fba => fba.Fluent_Book)
+						.WithMany(fba => fba.Fluent_BookAuthors)
+						.HasForeignKey(fba => fba.Book_Id);
+			modelBuilder.Entity<Fluent_BookAuthor>()
+						.HasOne(fba => fba.Fluent_Author)
+						.WithMany(fba => fba.Fluent_BookAuthors)
+						.HasForeignKey(fba => fba.Author_Id);
+
+			#endregion
 
 		}
 
